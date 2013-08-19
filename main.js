@@ -60,7 +60,7 @@ function makeCorsRequest() {
   var url = requestData();
   console.log(url);
   var obj = createYouTubeRequestObject();
-  var apiParams = "{\"id\":\""+ obj.id + "\",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":\"" + obj.views + "\",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
+  var apiParams = "{\"id\":"+ obj.id + ",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":\"" + obj.views + "\",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
 
   var xhr = createCORSRequest('POST', url);
   if (!xhr) {
