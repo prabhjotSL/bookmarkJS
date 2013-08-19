@@ -79,7 +79,7 @@ function makeCorsRequest() {
     console.log('Woops, there was an error making the request.');
   };
 
-  xhr.send(obj);
+  xhr.send("SAMPLE STRING FOR POST");
 }
 
 return {
