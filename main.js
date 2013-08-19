@@ -30,8 +30,6 @@ function createYouTubeRequestObject(){
   var author = $("#watch7-user-header .yt-user-name").text();
   var viewsCount = $("#watch7-views-info .watch-view-count").text().trim();
   var url = location.href;
-  // code due to the problem of ? in youtube videos.
-  url.replace("?", "_____");
   var obj = {
     id: 1,
     url: url,
