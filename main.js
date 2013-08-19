@@ -43,17 +43,16 @@ function createYouTubeRequestObject(){
   return obj;  
 }
 
-function createRequestURL(baseURL, apiController, apiParams){
-  return baseURL + "/" + apiController + "/" + apiParams;
+function createRequestURL(baseURL, apiController){
+  return baseURL + "/" + apiController;
 }
 
 function requestData(){
-  var obj = createYouTubeRequestObject();
   var apiController = "book";
-  var apiParams = "{\"id\":\""+ obj.id + "\",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":\"" + obj.views + "\",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
+  //var apiParams = "{\"id\":\""+ obj.id + "\",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":\"" + obj.views + "\",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
   var baseURL = "http://192.168.0.196:9000";
-  console.log(apiParams);
-  return createRequestURL(baseURL, apiController, apiParams);
+  //console.log(apiParams);
+  return createRequestURL(baseURL, apiController);
 }
 
 // Make the actual CORS request.
@@ -62,6 +61,7 @@ function makeCorsRequest() {
   //var url = 'http://updates.html5rocks.com';
   var url = requestData();
   console.log(url);
+  var obj = createYouTubeRequestObject();
 
   var xhr = createCORSRequest('POST', url);
   if (!xhr) {
@@ -79,7 +79,7 @@ function makeCorsRequest() {
     console.log('Woops, there was an error making the request.');
   };
 
-  xhr.send();
+  xhr.send(obj);
 }
 
 return {
