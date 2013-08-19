@@ -15,31 +15,70 @@ function createCORSRequest(method, url) {
   return xhr;
 }
 
-// Helper method to parse the title tag from the response.
-function getTitle(text) {
-  return text.match('<title>(.*)?</title>')[1];
+function getTimeForBookmark(){
+    time = new Date();
+    return (time.getHours() < 10 ? "0" : "") + time.getHours() + ":" + (time.getMinutes() < 10 ? "0" : "") + time.getMinutes() + ":" + (time.getSeconds() < 10 ? "0" : "") + time.getSeconds();
+}
+
+function getDateForBookmark(){
+    newDate = new Date();
+    return newDate.getFullYear() + "-" + ((newDate.getMonth() + 1) < 10 ? "0" : "") + (newDate.getMonth() + 1) + "-" + (newDate.getDate() < 10 ? "0" : "") + newDate.getDate();
+}
+
+function createYouTubeRequestObject(){
+  var title = $("#watch-headline-title #eow-title").attr("title");
+  var author = $("#watch7-user-header .yt-user-name").text();
+  var viewsCount = $("#watch7-views-info .watch-view-count").text().trim();
+  var url = location.href;
+  // code due to the problem of ? in youtube videos.
+  url.replace("?", "_____");
+  var obj = {
+    id: 1,
+    url: url,
+    title: title,
+    author: author,
+    views: viewsCount.replace(/,/g, ""),
+    timeBook: getTimeForBookmark(),
+    dateBook: getDateForBookmark()
+  };
+  console.log(obj);
+  return obj;  
+}
+
+function createRequestURL(baseURL, apiController, apiParams){
+  return baseURL + "/" + apiController + "/" + apiParams;
+}
+
+function requestData(){
+  var obj = createYouTubeRequestObject();
+  var apiController = "book";
+  var apiParams = "{\"id\":\""+ obj.id + "\",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":\"" + obj.views + "\",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
+  var baseURL = "http://10.0.1.50";
+  console.log(apiParams);
+  return createRequestURL(baseURL, apiController, apiParams);
 }
 
 // Make the actual CORS request.
 function makeCorsRequest() {
   // All HTML5 Rocks properties support CORS.
-  var url = 'http://updates.html5rocks.com';
+  //var url = 'http://updates.html5rocks.com';
+  var url = requestData();
+  console.log(url);
 
-  var xhr = createCORSRequest('GET', url);
+  var xhr = createCORSRequest('POST', url);
   if (!xhr) {
-    alert('CORS not supported');
+    console.log('CORS not supported');
     return;
   }
 
   // Response handlers.
   xhr.onload = function() {
     var text = xhr.responseText;
-    var title = getTitle(text);
-    alert('Response from CORS request to ' + url + ': ' + title);
+    console.log(text);
   };
 
   xhr.onerror = function() {
-    alert('Woops, there was an error making the request.');
+    console.log('Woops, there was an error making the request.');
   };
 
   xhr.send();
