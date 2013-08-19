@@ -79,6 +79,8 @@ function makeCorsRequest() {
     console.log('Woops, there was an error making the request.');
   };
 
+  xhr.setRequestHeader("Content-type","text/plain");
+
   xhr.send("SAMPLE STRING FOR POST");
 }
 
