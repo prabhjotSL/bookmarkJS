@@ -29,13 +29,17 @@ function createYouTubeRequestObject(){
   var title = $("#watch-headline-title #eow-title").attr("title");
   var author = $("#watch7-user-header .yt-user-name").text();
   var viewsCount = $("#watch7-views-info .watch-view-count").text().trim();
+  viewsCount = viewsCount.replace(/views/g, "");
+  viewsCount = viewsCount.trim();
+  viewsCount = viewsCount.replace(/,/g, "");
+  viewsCount = parseInt(viewsCount);
   var url = location.href;
   var obj = {
     id: 1,
     url: url,
     title: title,
     author: author,
-    views: viewsCount.replace(/,/g, ""),
+    views: viewsCount,
     timeBook: getTimeForBookmark(),
     dateBook: getDateForBookmark()
   };
@@ -60,7 +64,7 @@ function makeCorsRequest() {
   var url = requestData();
   console.log(url);
   var obj = createYouTubeRequestObject();
-  var apiParams = "{\"id\":"+ obj.id + ",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":\"" + obj.views + "\",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
+  var apiParams = "{\"id\":"+ obj.id + ",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":" + obj.views + ",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
 
   var xhr = createCORSRequest('POST', url);
   if (!xhr) {
