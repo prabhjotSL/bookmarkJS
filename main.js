@@ -1,4 +1,4 @@
-(function() {// Create the XHR object.
+var VIDOOK_MAIN__ = (function() {// Create the XHR object.
 function createCORSRequest(method, url) {
   var xhr = new XMLHttpRequest();
   if ("withCredentials" in xhr) {
@@ -45,6 +45,10 @@ function makeCorsRequest() {
   xhr.send();
 }
 
-makeCorsRequest();
+return {
+  makeCorsRequest: makeCorsRequest
+};
 
 })();
+
+window.VIDOOK_MAIN__ = VIDOOK_MAIN__;
