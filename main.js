@@ -35,7 +35,7 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
     viewsCount = parseInt(viewsCount);
     var url = location.href;
     var obj = {
-      id: 2,
+      id: 1,
       url: url,
       title: title,
       author: author,
@@ -53,7 +53,8 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
 
   function requestData(){
     var apiController = "book";
-    var baseURL = "http://192.168.0.196:9000";
+    //var baseURL = "http://192.168.0.196:9000";
+    var baseURL = "http://vidoo.in";
     return createRequestURL(baseURL, apiController);
   }
 
