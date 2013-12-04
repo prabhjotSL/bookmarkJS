@@ -32,14 +32,14 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
     viewsCount = viewsCount.replace(/views/g, "");
     viewsCount = viewsCount.trim();
     viewsCount = viewsCount.replace(/,/g, "");
-    viewsCount = parseInt(viewsCount);
+    //viewsCount = parseInt(viewsCount);
     var url = location.href;
     var obj = {
       id: 1,
       url: url,
       title: title,
       author: author,
-      views: viewsCount,
+      views:  viewsCount,
       timeBook: getTimeForBookmark(),
       dateBook: getDateForBookmark()
     };
