@@ -26,6 +26,8 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
   }
 
   function createYouTubeRequestObject(){
+    // This function will be called only if youtube is detected, this is inside function.
+    // we can hard code source url and source name here.
     var title = $("#watch-headline-title #eow-title").attr("title");
     var author = $("#watch7-user-header .yt-user-name").text();
     var viewsCount = $("#watch7-views-info .watch-view-count").text().trim();
@@ -33,6 +35,8 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
     viewsCount = viewsCount.trim();
     viewsCount = viewsCount.replace(/,/g, "");
     //viewsCount = parseInt(viewsCount);
+    var source_url = "http://youtube.com";
+    var source_name = "Youtube";
     var url = location.href;
     var obj = {
       id: 1,
@@ -41,7 +45,9 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
       author: author,
       views:  viewsCount,
       timeBook: getTimeForBookmark(),
-      dateBook: getDateForBookmark()
+      dateBook: getDateForBookmark(),
+      source_url: source_url,
+      source_name: source_name
     };
     console.log(obj);
     return obj;  
@@ -64,7 +70,11 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
     console.log(url);
     var obj = createYouTubeRequestObject();
     // Creating JSON String.
-    var apiParams = "{\"id\":"+ obj.id + ",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":\"" + obj.views + "\",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
+    // OLD API PARAMS WITH TITLE, AUTHOR, VIEWS
+    //var apiParams = "{\"id\":"+ obj.id + ",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":\"" + obj.views + "\",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
+
+    // NEW API PARAMS WITH SOURCE_URL AND SOURCE_NAME
+    var apiParams = "{\"id\":"+ obj.id + ",\"source_url\":\"" + obj.source_url + "\",\"source_name\":\"" + obj.source_name + "\",\"url\":\"" + obj.url + "\",\"date\":\"" + obj.dateBook + "\",\"time\":\"" + obj.timeBook + "\"}";
 
     var xhr = createCORSRequest('POST', url);
     if (!xhr) {
