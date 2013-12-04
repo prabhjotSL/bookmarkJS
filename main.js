@@ -85,7 +85,7 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
     //xhr.setRequestHeader("Content-type","text/plain");
     xhr.setRequestHeader("Content-type","application/json");
     // Code to send POST request.
-    xhr.send(apiParams);
+    xhr.send(encodeURI(apiParams));
   }
 
   return {
