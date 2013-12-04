@@ -64,7 +64,7 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
     console.log(url);
     var obj = createYouTubeRequestObject();
     // Creating JSON String.
-    var apiParams = "{\"id\":"+ obj.id + ",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":" + obj.views + ",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
+    var apiParams = "{\"id\":"+ obj.id + ",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":\"" + obj.views + "\",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
 
     var xhr = createCORSRequest('POST', url);
     if (!xhr) {
