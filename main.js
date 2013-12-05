@@ -59,8 +59,8 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
 
   function requestData(){
     var apiController = "book";
-    //var baseURL = "http://192.168.0.196:9000";
-    var baseURL = "http://vidoo.in";
+    var baseURL = "http://10.0.1.98:9000";
+    //var baseURL = "http://vidoo.in";
     return createRequestURL(baseURL, apiController);
   }
 
