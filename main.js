@@ -39,7 +39,7 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
     var source_name = "Youtube";
     var url = location.href;
     var obj = {
-      id: 2,
+      id: 3,
       url: url,
       title: title,
       author: author,
