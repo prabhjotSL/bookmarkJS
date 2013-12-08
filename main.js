@@ -39,7 +39,7 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
     var source_name = "Youtube";
     var url = location.href;
     var obj = {
-      id: 3,
+      id: 1,
       url: url,
       title: title,
       author: author,
@@ -59,8 +59,8 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
 
   function requestData(){
     var apiController = "book";
-    //var baseURL = "http://10.0.1.98:9000";
-    var baseURL = "http://vidoo.in";
+    var baseURL = "http://10.0.0.3:9000";
+    //var baseURL = "http://vidoo.in";
     return createRequestURL(baseURL, apiController);
   }
 
