@@ -1,3 +1,13 @@
+/*
+
+Code for VIDOOK Plugin to 
+1. generate bookmark object
+2. show notification of success/unsuccess bookmarking
+3. Send data to server
+4. A better way will be to include Timezone plugin file as a json directly from CDN ? Problem could be that this library is removed from CDN ?
+(Discuss)
+*/
+
 var VIDOOK_MAIN__ = (function() {// Create the XHR object.
   function createCORSRequest(method, url) {
     var xhr = new XMLHttpRequest();
@@ -23,6 +33,11 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
   function getDateForBookmark(){
       newDate = new Date();
       return newDate.getFullYear() + "-" + ((newDate.getMonth() + 1) < 10 ? "0" : "") + (newDate.getMonth() + 1) + "-" + (newDate.getDate() < 10 ? "0" : "") + newDate.getDate();
+  }
+
+  function getTimezoneString(){
+    var tz = jstz.determine(); // Determines the time zone of the browser client
+    tz.name(); // Returns the name of the time zone eg "Europe/Berlin"
   }
 
   function createYouTubeRequestObject(){

@@ -14,6 +14,19 @@ javascript: (function(){
       var SCRIPT_URL = "https://raw.github.com/prabhjotSL/bookmarkJS/master/main.js";
       var jsCode = document.createElement("script");   
       jsCode.setAttribute("src", SCRIPT_URL);
+      jsCode.onload = getJSTimezonePlugin;
+      document.body.appendChild(jsCode);
+    }
+    else {
+      getJSTimezonePlugin();
+    }
+  }
+
+  function getJSTimezonePlugin() {
+    if(!(window.jstz)){
+      var SCRIPT_URL = "//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js";
+      var jsCode = document.createElement("script");   
+      jsCode.setAttribute("src", SCRIPT_URL);
       jsCode.onload = releasetheTrojanHorse;
       document.body.appendChild(jsCode);
     }
