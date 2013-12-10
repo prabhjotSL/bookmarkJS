@@ -75,8 +75,8 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
 
   function requestData(){
     var apiController = "book";
-    var baseURL = "http://localhost:9000";
-    //var baseURL = "http://vidoo.in";
+    //var baseURL = "http://localhost:9000";
+    var baseURL = "http://vidoo.in";
     return createRequestURL(baseURL, apiController);
   }
 
@@ -90,7 +90,7 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
     //var apiParams = "{\"id\":"+ obj.id + ",\"url\":\"" + obj.url + "\",\"title\":\"" + obj.title + "\",\"author\":\"" + obj.author + "\",\"views-count\":\"" + obj.views + "\",\"time\":\"" + obj.timeBook + "\",\"date\":\"" + obj.dateBook + "\"}";
 
     // NEW API PARAMS WITH SOURCE_URL AND SOURCE_NAME
-    var apiParams = "{\"id\":"+ obj.id + ",\"source_url\":\"" + obj.source_url + "\",\"source_name\":\"" + obj.source_name + "\",\"url\":\"" + obj.url + "\",\"views-count\":\"" + obj.views + "\",\"date\":\"" + obj.dateBook + "\",\"time\":\"" + obj.timeBook + "\"}";
+    var apiParams = "{\"id\":"+ obj.id + ",\"source_url\":\"" + obj.source_url + "\",\"source_name\":\"" + obj.source_name + "\",\"url\":\"" + obj.url + "\",\"timezone\":\"" + obj.timezone + "\"}";
 
     var xhr = createCORSRequest('POST', url);
     if (!xhr) {
