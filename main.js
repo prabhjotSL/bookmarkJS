@@ -37,7 +37,7 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
 
   function getTimezoneString(){
     var tz = jstz.determine(); // Determines the time zone of the browser client
-    tz.name(); // Returns the name of the time zone eg "Europe/Berlin"
+    return tz.name(); // Returns the name of the time zone eg "Europe/Berlin"
   }
 
   function createYouTubeRequestObject(){
@@ -62,7 +62,8 @@ var VIDOOK_MAIN__ = (function() {// Create the XHR object.
       timeBook: getTimeForBookmark(),
       dateBook: getDateForBookmark(),
       source_url: source_url,
-      source_name: source_name
+      source_name: source_name,
+      timezone: getTimezoneString()
     };
     console.log(obj);
     return obj;  
